@@ -2,6 +2,7 @@
 ## NOTICE.
 
 * Switch to the ```"re-customed_navi_drawer"``` branch for a new customization of the original project.
+* <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="shrikanthravi"><a class="LI-simple-link" href='https://github.com/nichieaaron/Custom-Navigation-Drawer/tree/re-customed_navi_drawer'>re-customed_navi_drawer</a> branch</div>
 
 ## All Credit goes to
 <div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="horizontal" data-theme="light" data-vanity="shrikanthravi"><a class="LI-simple-link" href='https://in.linkedin.com/in/shrikanthravi?trk=profile-badge'>Shrikanth Ravi</a></div>
