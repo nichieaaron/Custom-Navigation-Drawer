@@ -51,8 +51,8 @@ public class SNavigationDrawer extends RelativeLayout{
     private int menuIconTintColor = R.color.Black;
     private float menuIconSize = 30;
     private float appbarTitleTextSize = 20;
-    private float primaryMenuItemTextSize = 20;
-    private float secondaryMenuItemTextSize = 20;
+    private float primaryMenuItemTextSize = 14;
+    private float secondaryMenuItemTextSize = 12;
 
     //Other stuff
     private boolean navOpen=false;
@@ -151,9 +151,9 @@ public class SNavigationDrawer extends RelativeLayout{
             ImageView backgroundIV = view.findViewById(R.id.backgroundIV);
             CardView backgroundCV = view.findViewById(R.id.backgroundCV);
             View tintView = (View) view.findViewById(R.id.tintView);
-            tintView.setBackgroundColor(menuItemSemiTransparentColor);
-            titleTV.setTextColor(secondaryMenuItemTextColor);
-            titleTV1.setTextColor(primaryMenuItemTextColor);
+            tintView.setBackgroundColor(getResources().getColor(R.color.transparent_black_percent_60));
+            titleTV.setTextColor(getResources().getColor(R.color.light_gray));
+            titleTV1.setTextColor(getResources().getColor(R.color.White));
             titleTV.setTextSize(secondaryMenuItemTextSize);
             titleTV1.setTextSize(primaryMenuItemTextSize);
             final RelativeLayout rootRL = view.findViewById(R.id.rootRL);
@@ -169,14 +169,14 @@ public class SNavigationDrawer extends RelativeLayout{
             rootRL.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if(currentPos!=Integer.valueOf(view.getTag().toString())){
+                    if(currentPos!=Integer.parseInt(view.getTag().toString())){
 
                         final CardView backCV1 = (CardView) menuLL.findViewWithTag("cv"+currentPos);
                         final TextView title1 = (TextView) menuLL.findViewWithTag("tv"+currentPos);
 
                         backCV1.animate().translationX(rootRL.getX()-backCV1.getWidth()).setDuration(300).start();
 
-                        currentPos=Integer.valueOf(view.getTag().toString());
+                        currentPos=Integer.parseInt(view.getTag().toString());
                         menuItemClicked(currentPos);
 
                         appbarTitleTV.setText(menuItemList.get(currentPos).getTitle());
@@ -200,12 +200,11 @@ public class SNavigationDrawer extends RelativeLayout{
                             }
                         },300);
                         //Close Navigation Drawer
-                       closeDrawer();
                     }
                     else{
                         menuItemClicked(currentPos);
-                        closeDrawer();
                     }
+                    closeDrawer();
                 }
             });
             backgroundIV.setImageDrawable(getContext().getDrawable(menuItemList.get(i).getImageId()));
@@ -342,10 +341,10 @@ public class SNavigationDrawer extends RelativeLayout{
         navOpen=true;
         final int[] stateSet = {android.R.attr.state_checked * (navOpen ? 1 : -1)};
         menuIV.setImageState(stateSet,true);
-        containerCV.setCardElevation((float) 100.0);
+        containerCV.setCardElevation((float) 150.0);
         containerCV.setRadius((float)60.0);
-        appbarTitleTV.animate().translationX(centerX+menuIV.getWidth()+menuIV.getWidth()/4+appbarTitleTV.getWidth()/2-appbarRL.getWidth()/2).start();
-        containerCV.animate().translationX(rootLayout.getX() +(rootLayout.getWidth() / 8)+ (rootLayout.getWidth() / 2) ).translationY(250).setDuration(500).start();
+        appbarTitleTV.animate().translationX(centerX+menuIV.getWidth()+ (menuIV.getWidth() >> 2) + (appbarTitleTV.getWidth() >> 1) - (appbarRL.getWidth() >> 1)).start();
+        containerCV.animate().translationX(rootLayout.getX() + (rootLayout.getWidth() >> 1) ).translationY(400).setDuration(300).start();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
@@ -366,8 +365,8 @@ public class SNavigationDrawer extends RelativeLayout{
         setPrimaryMenuItemTextColor(attrs.getColor(R.styleable.SNavigationDrawer_navigationDrawerBackgroundColor,getResources().getColor(primaryMenuItemTextColor)));
         setSecondaryMenuItemTextColor(attrs.getColor(R.styleable.SNavigationDrawer_secondaryMenuItemTextColor,getResources().getColor(secondaryMenuItemTextColor)));
         setAppbarTitleTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_appbarTitleTextSize,20));
-        setPrimaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_primaryMenuItemTextSize,20));
-        setSecondaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_secondaryMenuItemTextSize,20));
+        setPrimaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_primaryMenuItemTextSize,primaryMenuItemTextSize));
+        setSecondaryMenuItemTextSize(attrs.getDimension(R.styleable.SNavigationDrawer_secondaryMenuItemTextSize,secondaryMenuItemTextSize));
         setMenuIconSize(attrs.getDimension(R.styleable.SNavigationDrawer_HamMenuIconSize,20));
 
     }
