@@ -52,7 +52,7 @@ public class SNavigationDrawer extends RelativeLayout{
     private float menuIconSize = 30;
     private float appbarTitleTextSize = 20;
     private float primaryMenuItemTextSize = 14;
-    private float secondaryMenuItemTextSize = 12;
+    private float secondaryMenuItemTextSize = 14;
 
     //Other stuff
     private boolean navOpen=false;
@@ -160,6 +160,7 @@ public class SNavigationDrawer extends RelativeLayout{
             backgroundCV.setTag("cv"+i);
             System.out.println("Testing "+backgroundCV.getTag());
             titleTV.setTag("tv"+i);
+            appbarTitleTV.setText(menuItemList.get(0).getTitle());
             if(i>=1){
                 backgroundCV.setVisibility(View.GONE);
                 backgroundCV.animate().translationX(rootRL.getX()-backgroundCV.getWidth()).setDuration(1).start();
