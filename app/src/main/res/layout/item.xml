@@ -49,6 +49,7 @@
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
                     android:drawablePadding="10dp"
+                    android:gravity="start|center"
                     android:ellipsize="end"
                     android:text="@string/description"
                     android:layout_width="match_parent"

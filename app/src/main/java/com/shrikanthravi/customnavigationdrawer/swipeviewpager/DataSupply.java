@@ -59,8 +59,9 @@ public class DataSupply {
             case NEWS:
             case FEED:
             case MSG:
-            case MUSIC:
                 return new int[] {R.drawable.news_bg, R.drawable.feed_bg, R.drawable.message_bg, R.drawable.music_bg};
+            case MUSIC:
+                return new int[] {R.drawable.reggae_bg, R.drawable.rnb_bg, R.drawable.country_bg};
         }
         return new int[] {};
     }

@@ -86,4 +86,12 @@
     <color name="transparent_white_percent_95">#F2ffffff</color>
     <color name="AppDark">#000000</color>
     <color name="AppLight">#ffffff</color>
+    <color name="feed_frag_color">#99ffb900</color>
+    <color name="feed_frag_color1">#a6ffb980</color>
+    <color name="feed_frag_color2">#b3ffb9A0</color>
+    <color name="feed_frag_color3">#bfffb9C0</color>
+    <color name="music_frag_color">#ff20ff</color>
+    <color name="music_frag_color1">#ff60ff</color>
+    <color name="music_frag_color2">#ff80ff</color>
+    <color name="music_frag_color3">#ff90ff</color>
 </resources>

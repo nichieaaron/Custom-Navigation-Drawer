@@ -3,6 +3,7 @@ package com.shrikanthravi.customnavigationdrawer;
 
 import static com.shrikanthravi.customnavigationdrawer.swipeviewpager.DataSupply.StockItem.FEED;
 
+import android.animation.ArgbEvaluator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -28,6 +29,8 @@ public class FeedFragment extends Fragment {
     Adapter adapter;
     List<Model> models;
     View vw;
+    Integer[] colors = null;
+    ArgbEvaluator argbEvaluator = new ArgbEvaluator();
 
     public FeedFragment() {
         // Required empty public constructor
@@ -53,6 +56,45 @@ public class FeedFragment extends Fragment {
         viewPager = vw.findViewById(R.id.viewPager);
         viewPager.setAdapter(adapter);
         viewPager.setPadding(60, 0, 60, 0);
+
+        Integer[] colors_temp = {
+                getResources().getColor(R.color.feed_frag_color),
+                getResources().getColor(R.color.feed_frag_color1),
+                getResources().getColor(R.color.feed_frag_color2),
+                getResources().getColor(R.color.feed_frag_color3)
+        };
+
+        colors = colors_temp;
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int pos, float posOffset, int posOffsetPx) {
+                if (pos < (adapter.getCount() -1) && pos < (colors.length - 1)) {
+                    viewPager.setBackgroundColor(
+
+                            (Integer) argbEvaluator.evaluate(
+                                    posOffset,
+                                    colors[pos],
+                                    colors[pos + 1]
+                            )
+                    );
+                }
+
+                else {
+                    viewPager.setBackgroundColor(colors[colors.length - 1]);
+                }
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
 
         return vw;
     }

@@ -1,7 +1,10 @@
 package com.shrikanthravi.customnavigationdrawer.swipeviewpager;
 
+import static android.text.Layout.JUSTIFICATION_MODE_INTER_WORD;
+
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -46,6 +49,10 @@ public class Adapter extends PagerAdapter {
         imageView = view.findViewById(R.id.image);
         title = view.findViewById(R.id.title);
         desc = view.findViewById(R.id.desc);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            desc.setJustificationMode(JUSTIFICATION_MODE_INTER_WORD);
+        }
 
         imageView.setImageResource(models.get(position).getImage());
         title.setText(models.get(position).getTitle());
