@@ -1,5 +1,5 @@
 ## Modified Version
-![alt text](https://github.com/nichieaaron/Custom-Navigation-Drawer/blob/re-customed_navi_drawer/app_vid.gif)
+![alt text](https://github.com/nichieaaron/Custom-Navigation-Drawer/blob/re-customed_navi_drawer/app_gif.gif)
 
 ### Original
 ![alt text](https://drive.google.com/uc?id=1frkB2g3FGLCBDN6icLGAJ9NM_k4mhCcD)
