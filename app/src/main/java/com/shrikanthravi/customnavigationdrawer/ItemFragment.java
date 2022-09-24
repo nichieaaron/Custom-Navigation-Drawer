@@ -20,6 +20,7 @@ import com.shrikanthravi.customnavigationdrawer.swipeviewpager.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 /**
@@ -54,22 +55,25 @@ public class ItemFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        System.out.println("[nicaar] Got something="+ fragTy);
+        //System.out.println("[nicaar] Got something="+ fragTy);
 
         // Inflate the layout for this fragment
         vw = inflater.inflate(R.layout.item_fragment, container, false);
-
-        models = new ArrayList<>();
-        DataSupply ds = new DataSupply();
-        models = ds.AddItemsInStock(fragTy);
-
-        adapter = new Adapter(models, getContext());
-
         viewPager = vw.findViewById(R.id.viewPager);
         Button ct = vw.findViewById(R.id.btnCart);
         Button a2c = vw.findViewById(R.id.a2c);
-        viewPager.setAdapter(adapter);
-        viewPager.setPadding(60, 0, 60, 0);
+
+        new Thread(() -> {
+            models = new ArrayList<>();
+            DataSupply ds = new DataSupply();
+            models = ds.AddItemsInStock(fragTy);
+
+            Objects.requireNonNull(getActivity()).runOnUiThread(() -> {
+                adapter = new Adapter(models, getContext());
+                viewPager.setAdapter(adapter);
+                viewPager.setPadding(60, 0, 60, 0);
+            });
+        }).start();
 
         switch (fragTy)
         {
@@ -100,7 +104,6 @@ public class ItemFragment extends Fragment {
                             )
                     );
                 }
-
                 else {
                     viewPager.setBackgroundColor(colors[colors.length - 1]);
                 }
