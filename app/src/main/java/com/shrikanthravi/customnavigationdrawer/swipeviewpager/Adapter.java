@@ -10,8 +10,11 @@ import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.shrikanthravi.customnavigationdrawer.R;
 
 import java.util.List;
@@ -44,8 +47,9 @@ public class Adapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.item, container, false);
 
         ImageView imageView;
-        TextView title, desc;
+        TextView title, desc, numTv;
 
+        numTv = view.findViewById(R.id.numTv);
         imageView = view.findViewById(R.id.image);
         title = view.findViewById(R.id.title);
         desc = view.findViewById(R.id.desc);
@@ -57,18 +61,7 @@ public class Adapter extends PagerAdapter {
         imageView.setImageResource(models.get(position).getImage());
         title.setText(models.get(position).getTitle());
         desc.setText(models.get(position).getDesc());
-
-        /* todo
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("param", models.get(position).getTitle());
-                context.startActivity(intent);
-                // finish();
-            }
-        });
-        */
+        numTv.setText(String.valueOf(position + 1));
 
         container.addView(view, 0);
         return view;

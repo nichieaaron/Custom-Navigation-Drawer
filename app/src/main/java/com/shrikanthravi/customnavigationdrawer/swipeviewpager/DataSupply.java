@@ -42,7 +42,7 @@ public class DataSupply {
         switch (itm)
         {
             case NEWS:
-                return new String[] {"VoA", "BBC", "CNN", "RT"};
+                return new String[] {"VoA", "BBC", "RT"};
             case FEED:
                 return new String[] {"Odyssey", "Bitchute", "RokFin"};
             case MSG:
@@ -56,10 +56,10 @@ public class DataSupply {
     private int[] getItemImage(StockItem itm){
         switch (itm)
         {
-            case NEWS:
             case FEED:
             case MSG:
                 return new int[] {R.drawable.news_bg, R.drawable.feed_bg, R.drawable.message_bg, R.drawable.music_bg};
+            case NEWS:
             case MUSIC:
                 return new int[] {R.drawable.reggae_bg, R.drawable.rnb_bg, R.drawable.country_bg};
         }
